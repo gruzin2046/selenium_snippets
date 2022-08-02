@@ -3,8 +3,14 @@ package p01_vanila;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,6 +52,22 @@ class HelloSeleniumTest {
      */
     @Test
     void homePageShouldHaveProperContentTitle() {
+        driver.get("http://the-internet.herokuapp.com");
+        WebElement contentTitle1 = driver.findElement(By.tagName("h1"));
+        WebElement contentTitle2 = driver.findElement(By.className("heading"));
+        WebElement contentTitle3 = driver.findElement(By.cssSelector("h1"));
+        WebElement contentTitle4 = driver.findElement(By.cssSelector(".heading"));
+        WebElement contentTitle5 = driver.findElement(By.cssSelector("h1.heading"));
+
+        WebElement contentTitle6 = driver.findElement(By.cssSelector("#content > h1"));
+        WebElement contentTitle8 = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
+
+        WebElement contentTitle9 = driver.findElement(By.cssSelector("#content h1"));
+        WebElement contentTitle10 = driver.findElement(By.xpath("//*[@id=\"content\"]//h1"));
+
+        WebElement contentTitle7 = driver.findElement(By.xpath("/html/body/div[2]/div/h1"));
+
+        assertEquals("Welcome to the-internet",contentTitle6.getText());
     }
 
     /**
@@ -54,6 +76,7 @@ class HelloSeleniumTest {
      */
     @Test
     void formAuthenticationLink_shouldBePresentAndRouteToCorrectPage() {
+
     }
 
     /**

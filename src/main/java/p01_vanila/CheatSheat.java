@@ -21,7 +21,8 @@ public class CheatSheat {
         driver.get("https://www.programuj.pl");
 
         // zamknięcie przeglądarki
-        driver.quit();
+        driver.quit(); // wszystkich okien i zakładek
+        driver.close(); // obecnie aktywne okno/zakladka
 
         // === PODSTAWOWE INFORMACJE O STRONIE ===
         // pobranie tytułu strony (tytuł karty w przeglądarce)
