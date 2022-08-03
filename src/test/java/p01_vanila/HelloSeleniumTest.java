@@ -26,7 +26,7 @@ class HelloSeleniumTest {
 
     @AfterAll
     public static void cleanup() {
-        driver.quit();
+//        driver.quit();
     }
 
     @Test
@@ -36,6 +36,9 @@ class HelloSeleniumTest {
 
     @Test
     void homePageShouldLoadAndHaveCorrectTitle() {
+        driver.get("http://the-internet.herokuapp.com");
+        String title = driver.getTitle();
+        assertEquals(title,"The Internet");
     }
 
     /**
@@ -44,6 +47,9 @@ class HelloSeleniumTest {
      */
     @Test
     void openingHomepageShouldNotRedirectAnywhere() {
+        driver.get("http://the-internet.herokuapp.com");
+        String currentUrl = driver.getCurrentUrl();
+        assertEquals("http://the-internet.herokuapp.com/",currentUrl);
     }
 
     /**
@@ -76,6 +82,18 @@ class HelloSeleniumTest {
      */
     @Test
     void formAuthenticationLink_shouldBePresentAndRouteToCorrectPage() {
+        driver.get("http://the-internet.herokuapp.com");
+        // https://the-internet.herokuapp.com/login
+        // copied from Dev Tools
+        //#content > ul > li:nth-child(21) > a
+        //*[@id="content"]/ul/li[21]/a
+        WebElement link1 = driver.findElement(By.linkText("Form Authentication"));
+        WebElement link2 = driver.findElement(By.cssSelector("a[href='/login']"));
+        WebElement link3 = driver.findElement(By.xpath("//a[@href='/login']"));
+
+        link1.click();
+        String currentUrl = driver.getCurrentUrl();
+        assertEquals("http://the-internet.herokuapp.com/login",currentUrl);
 
     }
 
@@ -85,6 +103,19 @@ class HelloSeleniumTest {
      */
     @Test
     void forkMeOnGithubRibbon_shouldBePresentAndRouteToCorrectPage() {
+        driver.get("http://the-internet.herokuapp.com");
+        WebElement img1 = driver.findElement(By.cssSelector("img[src='/img/forkme_right_green_007200.png']"));
+        WebElement img2 = driver.findElement(By.cssSelector("img[src$='png']"));
+        WebElement img3 = driver.findElement(By.cssSelector("img[alt='Fork me on GitHub']"));
+
+        // "https://github.com/tourdedave/the-internet"
+
+        img3.click();
+        String currentUrl = driver.getCurrentUrl();
+        assertEquals("https://github.com/tourdedave/the-internet",currentUrl);
+        // przy małym rozmiarze okna element jest nieklikalny
+
+
     }
 
 
