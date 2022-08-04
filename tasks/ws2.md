@@ -12,3 +12,5 @@ W klasie TheInternetLoginPageTest zaimplementuj testy:
     - https://the-internet.herokuapp.com/secure
     - Message: You logged into a secure area!
     - Content Title: Secure Area
+
+-- Koniec workshopu o 18:20
