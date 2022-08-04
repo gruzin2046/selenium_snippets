@@ -104,6 +104,25 @@ class TheInternetLoginPageTest {
         assertEquals("http://the-internet.herokuapp.com/login",driver.getCurrentUrl());
 
     }
+
+    @Test
+    void submitting_wrongData(){
+        driver.get("http://the-internet.herokuapp.com/login");
+        WebElement userName = driver.findElement(By.id("username"));
+        WebElement userPasw = driver.findElement(By.id("password"));
+
+        String expectedMsg = "Your username is invalid!";
+
+        WebElement loginButton2 = driver.findElement(By.cssSelector("#login > button"));
+        userName.sendKeys("asia@sasasa");
+        userPasw.sendKeys("     ł");
+        loginButton2.submit();
+        WebElement flash = driver.findElement(By.id("flash"));
+        assertTrue(flash.isDisplayed());
+        assertTrue(flash.getText().contains(expectedMsg));
+        assertEquals("http://the-internet.herokuapp.com/login",driver.getCurrentUrl());
+
+    }
 //    W klasie TheInternetLoginPageTest zaimplementuj testy:
 //            1. Logowanie bez żadnych danych - "Your username is invalid!
 //            - https://the-internet.herokuapp.com/login
