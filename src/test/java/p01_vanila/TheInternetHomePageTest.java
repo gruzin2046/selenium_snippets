@@ -7,14 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HelloSeleniumTest {
+class TheInternetHomePageTest {
     private static WebDriver driver;
 
     @BeforeAll
@@ -26,7 +22,7 @@ class HelloSeleniumTest {
 
     @AfterAll
     public static void cleanup() {
-//        driver.quit();
+        driver.quit();
     }
 
     @Test
