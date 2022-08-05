@@ -13,7 +13,7 @@ public class HerokuLoginPage {
     private static final By SELECTOR_LOGIN_BUTTON = By.cssSelector("#login > button");
     private static final By SELECTOR_USERNAME_INPUT = By.id("username");
     private static final By SELECTOR_PASSWORD_INPUT = By.id("password");
-    private static final By SELECTOR_FLASH = By.id("flash");
+    static final By SELECTOR_FLASH = By.id("flash");
 
     private WebDriver driver;
 
@@ -39,10 +39,11 @@ public class HerokuLoginPage {
      */
 
 
-    public void loginWithCorrectCredentials(){
+    public HerokuSecurePage loginWithCorrectCredentials(){
         driver.findElement(SELECTOR_USERNAME_INPUT).sendKeys(CORRECT_USERNAME);
         driver.findElement(SELECTOR_PASSWORD_INPUT).sendKeys(CORRECT_PASSWORD);
         submitForm();
+        return new HerokuSecurePage(driver);
     }
 
     public void loginWithIncorrectCredentials(){
