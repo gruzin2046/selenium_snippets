@@ -43,7 +43,7 @@ public class HerokuLoginPage {
         driver.findElement(SELECTOR_USERNAME_INPUT).sendKeys(CORRECT_USERNAME);
         driver.findElement(SELECTOR_PASSWORD_INPUT).sendKeys(CORRECT_PASSWORD);
         submitForm();
-        return new HerokuSecurePage(driver);
+        return new HerokuSecurePage(driver, false);
     }
 
     public void loginWithIncorrectCredentials(){

@@ -7,12 +7,18 @@ import org.openqa.selenium.WebElement;
 import static p02_pom.heroku.HerokuLoginPage.SELECTOR_FLASH;
 
 public class HerokuSecurePage {
-    //private static final String LOGIN_PAGE_URL = "http://the-internet.herokuapp.com/secure";
+    private static final String LOGIN_PAGE_URL = "http://the-internet.herokuapp.com/secure";
     private WebDriver driver;
 
-    public HerokuSecurePage(WebDriver driver){
+    public HerokuSecurePage(WebDriver driver, boolean reload){
         this.driver = driver;
-        //driver.get(LOGIN_PAGE_URL);
+        if (reload) {
+            driver.get(LOGIN_PAGE_URL);
+        }
+        else if (!driver.getCurrentUrl().equals(LOGIN_PAGE_URL)) {
+            throw new RuntimeException("Cannot initialize HerokuSecurePage," +
+                    " as the driver points to a different page");
+        }
     }
 
     public boolean isSuccessfullLoginMsgDisplayed() {
