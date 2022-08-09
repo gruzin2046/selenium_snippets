@@ -52,98 +52,84 @@ class TheInternetHerokuLoginPageTest {
 
     @Test
     void loginPageShouldLoadAndHaveCorrectTitle() {
-        driver.get(LOGIN_PAGE_URL);
+        openLoginPage();
         String title = driver.getTitle();
         assertEquals(title, "The Internet");
     }
 
     @Test
     void submitting_wrongLoginDataForm_rendersUsernameInvalidMsg() {
-        driver.get(LOGIN_PAGE_URL);
-        fillUsername("asia@sasasa");
-        fillPassword("     ł");
-        submitForm();
-        String flashMessage = getFlashMessage();
-
-        assertTrue(flashMessage.contains("Your username is invalid!"));
-        assertEquals(LOGIN_PAGE_URL, driver.getCurrentUrl());
+        openLoginPage();
+        fillAndSendForm("asia@sasasa","     ł");
+        checkFlashMessage("Your username is invalid!",LOGIN_PAGE_URL);
     }
 
     // todo - wypadałoby poniżej zrobić podobny refactor jak w metodzie
     // submitting_wrongLoginDataForm_rendersUsernameInvalidMsg
     @Test
     void submitting_noData_rendersUsernameInvalidMsg() {
-        driver.get(LOGIN_PAGE_URL);
-        WebElement loginButton1 = getSubmitButtonElement();
-        /*
-        WebElement loginButton2 = driver.findElement(By.xpath("//form[@id='login']/button"));
-        WebElement loginButton3 = driver.findElement(By.xpath("//*[@id='login']/button") );
-        WebElement form = driver.findElement(By.xpath("//form[@id='login']"));
-        WebElement loginButton4 = driver.findElement(By.cssSelector("#login button"));
-        WebElement loginButton5 = driver.findElement(By.xpath("//*[@id='login']//button"));
-        */
-        loginButton1.submit();
-        WebElement flash = driver.findElement(SELECTOR_FLASH);
-        String expectedMsg = "Your username is invalid!";
-
-        assertTrue(flash.isDisplayed());
-        assertTrue(flash.getText().contains(expectedMsg));
-        assertEquals(LOGIN_PAGE_URL, driver.getCurrentUrl());
+        openLoginPage();
+        submitForm();
+        checkFlashMessage("Your username is invalid!", LOGIN_PAGE_URL);
     }
 
     @Test
     void submitting_wrongPasw_rendersPasswordInvalidMsg() {
-        driver.get(LOGIN_PAGE_URL);
-        WebElement userName = getUsernameInputElement();
-        WebElement userPasw = getPasswordInputElement();
-
-        String expectedMsg = "Your password is invalid!";
-
-        WebElement loginButton2 = getSubmitButtonElement();
-        userName.sendKeys("tomsmith");
-        userPasw.sendKeys("     ł");
-        loginButton2.submit();
-        WebElement flash = driver.findElement(SELECTOR_FLASH);
-        assertTrue(flash.isDisplayed());
-        assertTrue(flash.getText().contains(expectedMsg));
-        assertEquals(LOGIN_PAGE_URL, driver.getCurrentUrl());
+        openLoginPage();
+        fillAndSendForm("tomsmith", "     ł");
+        checkFlashMessage("Your password is invalid!", LOGIN_PAGE_URL);
     }
 
     @Test
     void submitting_correctCredentials_opensSecurePage() {
-        driver.get(LOGIN_PAGE_URL);
-        WebElement userName = getUsernameInputElement();
-        WebElement userPasw = getPasswordInputElement();
+        openLoginPage();
+        fillAndSendForm("tomsmith","SuperSecretPassword!" );
+        checkFlashMessage("You logged into a secure area!", SECURE_PAGE_URL);
+    }
 
-        String expectedMsg = "You logged into a secure area!";
-
-        WebElement loginButton = getSubmitButtonElement();
-        userName.sendKeys("tomsmith");
-        userPasw.sendKeys("SuperSecretPassword!");
-        loginButton.submit();
-        WebElement flash = driver.findElement(SELECTOR_FLASH);
+    private void checkFlashMessage(String expectedMsg, String pageAddress) {
+        WebElement flash = getFlashElement();
         assertTrue(flash.isDisplayed());
         assertTrue(flash.getText().contains(expectedMsg));
-        assertEquals(SECURE_PAGE_URL, driver.getCurrentUrl());
+        assertEquals(pageAddress, getCurrUrl());
     }
 
+    private void fillAndSendForm(String user, String password) {
+        fillUsername(user);
+        fillPassword(password);
+        submitForm();
+    }
+
+    private void openLoginPage() {
+        driver.get(LOGIN_PAGE_URL);
+    }
+
+    private String getCurrUrl() {
+        return driver.getCurrentUrl();
+    }
 
     private void fillUsername(String username){
-        driver.findElement(SELECTOR_USERNAME_INPUT).sendKeys(username);
+        getUsernameInputElement().sendKeys(username);
     }
+
     private void fillPassword(String password){
         getPasswordInputElement().sendKeys(password);
     }
+
     private void submitForm(){
         getSubmitButtonElement().submit();
     }
 
     private String getFlashMessage(){
-        return driver.findElement(SELECTOR_FLASH).getText();
+        return getFlashElement().getText();
     }
 
     private WebElement getSubmitButtonElement() {
         return driver.findElement(SELECTOR_LOGIN_BUTTON);
+    }
+
+    private WebElement getFlashElement() {
+        return driver.findElement(SELECTOR_FLASH);
     }
 
     private WebElement getPasswordInputElement() {
@@ -153,6 +139,5 @@ class TheInternetHerokuLoginPageTest {
     private WebElement getUsernameInputElement() {
         return driver.findElement(SELECTOR_USERNAME_INPUT);
     }
-
 
 }
