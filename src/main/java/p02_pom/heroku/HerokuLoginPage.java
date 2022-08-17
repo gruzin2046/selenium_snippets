@@ -4,12 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+/***
+ * Klasa modelująca stronę http://the-internet.herokuapp.com/login
+ */
 public class HerokuLoginPage {
-    private static final String LOGIN_PAGE_URL = "http://the-internet.herokuapp.com/login";
+    private static final String LOGIN_PAGE_URL = "http://x-kom.pl";
 
     static final String CORRECT_USERNAME = "tomsmith";
     static final String CORRECT_PASSWORD = "SuperSecretPassword!";
 
+//    #login - element o id="login"
+    // button - element typu button <button></button>
+    // > bezpośrednie dziecko
     private static final By SELECTOR_LOGIN_BUTTON = By.cssSelector("#login > button");
     private static final By SELECTOR_USERNAME_INPUT = By.id("username");
     private static final By SELECTOR_PASSWORD_INPUT = By.id("password");
@@ -43,6 +49,7 @@ public class HerokuLoginPage {
         driver.findElement(SELECTOR_USERNAME_INPUT).sendKeys(CORRECT_USERNAME);
         driver.findElement(SELECTOR_PASSWORD_INPUT).sendKeys(CORRECT_PASSWORD);
         submitForm();
+
         return new HerokuSecurePage(driver, false);
     }
 
