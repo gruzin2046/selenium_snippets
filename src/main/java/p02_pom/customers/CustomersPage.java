@@ -152,6 +152,12 @@ public class CustomersPage {
         }
     }
 
+    public String createLongString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("a".repeat(1200));
+        return sb.toString();
+    }
+
     /***
      * //*[@class="Customers-list"]/div/div/span[@class="customer-id"][contains(text(),'"+ id +"')]/../../strong[@class="Delete-button"]"
      */
