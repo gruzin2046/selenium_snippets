@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -76,13 +77,14 @@ public class CheatSheat {
         pageElement.submit();
 
         // waity - Selenium
-        // waity - imlicit
+        // waity - implicit
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // waity - explicit
         WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(registerButtonSelector));
+        Boolean test = webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(registerButtonSelector));
 
         // warunki parametryzowane selektorami
         ExpectedCondition<WebElement> presenceCondition = ExpectedConditions
@@ -104,10 +106,16 @@ public class CheatSheat {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.textToBe(By.tagName("h2"), "Hello World"));
 
         // waity - fluent
-        WebElement webElement = webDriverWait.ignoring(NotFoundException.class)
-                .pollingEvery(Duration.of(2, ChronoUnit.HOURS)).withTimeout(Duration.of(100, ChronoUnit.SECONDS))
-                .ignoring(Exception.class)
-                .until(ExpectedConditions.visibilityOf(pageElement));
+       webDriverWait
+                .ignoring(NoSuchElementException.class)
+                .pollingEvery(Duration.of(30, ChronoUnit.SECONDS))
+                .withTimeout(Duration.of(180, ChronoUnit.SECONDS))
+//                .until(ExpectedConditions.visibilityOf(pageElement));
+                .until(myDriver -> {
+                    myDriver.get("http://www.wp.pl");
+                    WebElement deleteButton = myDriver.findElement(By.id("delete-button"));
+                    return deleteButton.isEnabled();
+                } );
         // new FluentWait<WebDriver>(driver)
         // .ignoring()
 
