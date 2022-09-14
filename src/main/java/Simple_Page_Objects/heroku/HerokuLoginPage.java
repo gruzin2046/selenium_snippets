@@ -1,4 +1,4 @@
-package p02_pom.heroku;
+package Simple_Page_Objects.heroku;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package p01_vanila;
+package Tests_without_Page_Object;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

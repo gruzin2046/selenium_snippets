@@ -1,24 +1,16 @@
-package p02_pom.customers;
+package Simple_Page_Objects.customers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import p02_pom.customers.CustomersPage;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomersPageTest {
     private CustomersPage customersPage;
 
 // @BeforeEach @AfterEach - metody publiczne NIESTATYCZNE
-// @BeforeAll @AfterAll - metody publicczne STATYCZNE
+// @BeforeAll @AfterAll - metody publiczne STATYCZNE
 
     @BeforeEach
     public void setupBeforeEveryTest() {
@@ -166,87 +158,15 @@ public class CustomersPageTest {
         assertTrue(customersPage.getCustomerInputValue().isEmpty());
     }
 
-    @Test
-    public void addingSpaceShouldNotBePossible() {
-        List<String> expectedNames = List.of("Tomasz", "Anna", "Mateusz");
-        customersPage.addUser("$#@?~>");
-        List<String> customersNames = customersPage.findCustomersNames();
-        assertEquals(expectedNames, customersNames);
-    }
-
-    @Test
-    public void addingSpecialCharacterShouldNotBePossible() {
-        List<String> expectedNames = List.of("Tomasz", "Anna", "Mateusz");
-        customersPage.addUser(" ");
-        List<String> customersNames = customersPage.findCustomersNames();
-        assertEquals(expectedNames, customersNames);
-    }
-
-    @Test
-    public void addingPolishShouldBePossible() {
-        List<String> expectedNames = List.of("Tomasz", "Anna", "Mateusz", "Świętosława");
-        customersPage.addUser("Świętosława");
-        List<String> customersNames = customersPage.findCustomersNames();
-        assertEquals(expectedNames, customersNames);
-    }
-
-    @Test
-    public void addingLongStringShouldBePossible() {
-        String longString = customersPage.createLongString();
-        List<String> expectedNames = List.of("Tomasz", "Anna", "Mateusz", longString);
-        customersPage.addUser(longString);
-        List<String> customersNames = customersPage.findCustomersNames();
-        assertEquals(expectedNames, customersNames);
-    }
-
-    @Test
-    public void deletingMiddleUserShouldNotChangeNumbersOrder() {
-        int allCustomersNumberBeforeAdd = customersPage.findAllCustomers().size();
-        customersPage.deleteUser(allCustomersNumberBeforeAdd - 1);
-        List<Customer> allCustomers = customersPage.findAllCustomers();
-        Customer lastCustomer = allCustomers.get(allCustomers.size()-1);;
-        Assertions.assertEquals(allCustomersNumberBeforeAdd, lastCustomer.getId());
-    }
-
-
-    @Test
-    public void incrementationAddingOneUser() {
-        int allCustomersNumberBeforeAdd = customersPage.findAllCustomers().size();
-        customersPage.addUser("Nico");
-        Customer addedCustomer = customersPage.findAllCustomers().get(allCustomersNumberBeforeAdd);
-        Assertions.assertEquals("Nico", addedCustomer.getName());
-        Assertions.assertEquals(allCustomersNumberBeforeAdd + 1, addedCustomer.getId());
-    }
-
-    @Test
-    public void incrementationDeletingFirstUserAddingOneUser() {
-        int allCustomersNumberBeforeAdd = customersPage.findAllCustomers().size();
-        customersPage.deleteFirstCustomer();
-        customersPage.addUser("Nico");
-        Customer addedCustomer = customersPage.findAllCustomers().get(allCustomersNumberBeforeAdd - 1);
-        Assertions.assertEquals("Nico", addedCustomer.getName());
-        Assertions.assertEquals(allCustomersNumberBeforeAdd + 1, addedCustomer.getId());
-    }
-
-    @Test
-    public void incrementationDeletingLastUserAddingOneUser() {
-        int allCustomersNumberBeforeAdd = customersPage.findAllCustomers().size();
-        customersPage.deleteUser(allCustomersNumberBeforeAdd);
-        customersPage.addUser("Nico");
-        Customer addedCustomer = customersPage.findAllCustomers().get(allCustomersNumberBeforeAdd - 1);
-        Assertions.assertEquals("Nico", addedCustomer.getName());
-        Assertions.assertEquals(allCustomersNumberBeforeAdd, addedCustomer.getId());
-    }
-
     /***
-     * - Sprawdzić polskie znaki /done
-     * - Spróbować dodać spacje /done
-     * - Długi string (długość 1200) /done
-     * - Zakazane znaki (?) /done
-     * - Czy działa inkrementacja /done
-     * - Dodanie dwóch identycznych (powinno działać) / done
-     * - Usunięcie środkowego nie zmienia numeracji /done
-     * - Usunięcie ostatniego usera (ID: 4) -> Dodanie nowego - powinien mieć id 4 (o jeden większy niż największy) /done
+     * - Sprawdzić polskie znaki
+     * - Spróbować dodać spacje
+     * - Długi string (długość 1200)
+     * - Zakazane znaki (?)
+     * - Czy działa inkrementacja
+     * - Dodanie dwóch identycznych (powinno działać)
+     * - Usunięcie środkowego nie zmienia numeracji
+     * - Usunięcie ostatniego usera (ID: 4) -> Dodanie nowego - powinien mieć id 4 (o jeden większy niż największy)
      */
 }
 

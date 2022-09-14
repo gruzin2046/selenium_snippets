@@ -1,4 +1,4 @@
-package p02_pom.heroku.dygresjaMonada;
+package Simple_Page_Objects.heroku.dygresjaMonada;
 
 public class Person {
     public static void main(String[] args) {

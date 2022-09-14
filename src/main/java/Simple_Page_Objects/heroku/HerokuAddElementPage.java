@@ -1,10 +1,10 @@
-package p02_pom.heroku;
-
-import java.util.List;
+package Simple_Page_Objects.heroku;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class HerokuAddElementPage {
     private static final String PAGE_URL = "https://the-internet.herokuapp.com/add_remove_elements/";
