@@ -1,4 +1,4 @@
-package p02_pom.customers;
+package Simple_Page_Objects.customers;
 
 import java.util.Objects;
 

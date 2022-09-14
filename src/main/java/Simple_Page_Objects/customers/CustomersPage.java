@@ -1,19 +1,17 @@
-package p02_pom.customers;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+package Simple_Page_Objects.customers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 // Page Object
 public class CustomersPage {
-    private static final String PAGE_URL = "http://68.183.78.90:81/";
+    private static final String PAGE_URL = "http://68.183.78.90:81/customers";
 
     private static final By SELECTOR_CUSTOMER_BLOCK = By.className("Customer-data");
     private static final By SELECTOR_CUSTOMER_NAME = By.cssSelector("span.customer-name");

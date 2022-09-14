@@ -1,4 +1,4 @@
-package p02_pom.heroku;
+package Simple_Page_Objects.heroku;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,12 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static p02_pom.heroku.HerokuLoginPage.CORRECT_PASSWORD;
-import static p02_pom.heroku.HerokuLoginPage.CORRECT_USERNAME;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static Simple_Page_Objects.heroku.HerokuLoginPage.CORRECT_USERNAME;
 
 class HerokuLoginPageTest {
 

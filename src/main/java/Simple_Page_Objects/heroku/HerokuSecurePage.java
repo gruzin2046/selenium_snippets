@@ -1,10 +1,9 @@
-package p02_pom.heroku;
+package Simple_Page_Objects.heroku;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static p02_pom.heroku.HerokuLoginPage.SELECTOR_FLASH;
+import static Simple_Page_Objects.heroku.HerokuLoginPage.SELECTOR_FLASH;
 
 // klasa modelująca stronę http://the-internet.herokuapp.com/secure
 public class HerokuSecurePage {

@@ -1,24 +1,16 @@
-package p02_pom.customers;
+package Simple_Page_Objects.customers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import p02_pom.customers.CustomersPage;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomersPageTest {
     private CustomersPage customersPage;
 
 // @BeforeEach @AfterEach - metody publiczne NIESTATYCZNE
-// @BeforeAll @AfterAll - metody publicczne STATYCZNE
+// @BeforeAll @AfterAll - metody publiczne STATYCZNE
 
     @BeforeEach
     public void setupBeforeEveryTest() {
