@@ -1,14 +1,12 @@
-package Simple_Page_Objects.heroku;
+package Simple_Page_Objects.useful;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import java.time.Duration;
 
-
-public class dragAndDrop {
+public class DragAndDrop {
     private static final String LOGIN_PAGE_URL = "https://jqueryui.com/droppable/";
     private static final By selectorPageHeader = By.xpath("//div[@id='content']/h1");
     private static final By selectorSourceSquare = By.id("draggable");
@@ -17,7 +15,7 @@ public class dragAndDrop {
 
     private final WebDriver driver;
 
-    public dragAndDrop(WebDriver driver){
+    public DragAndDrop(WebDriver driver){
         this.driver = driver;
         driver.get(LOGIN_PAGE_URL);
     }
@@ -66,5 +64,4 @@ public class dragAndDrop {
         act.dragAndDropBy(findElem(selectorSourceSquare), 165, 50)
                 .perform();
     }
-
 }

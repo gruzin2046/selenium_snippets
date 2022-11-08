@@ -1,24 +1,21 @@
-package Simple_Page_Objects.heroku;
+package Simple_Page_Objects.useful;
 
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class dragAndDropTest {
+class DragAndDropTest {
 
     private static WebDriver driver;
-    private dragAndDrop dragAndDrop;
+    private DragAndDrop dragAndDrop;
 
     @BeforeAll
     public static void warmup() {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.home") + "/tools/webdrivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.whitelistedIps", "");
         driver = new ChromeDriver();
-
     }
 
     @AfterAll
@@ -28,7 +25,7 @@ class dragAndDropTest {
 
     @BeforeEach
     void prepareTest() {
-        dragAndDrop = new dragAndDrop(driver);
+        dragAndDrop = new DragAndDrop(driver);
     }
 
     @Test
