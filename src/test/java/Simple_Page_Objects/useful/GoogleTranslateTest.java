@@ -45,6 +45,7 @@ public class GoogleTranslateTest {
         assertEquals("I want to translate it", translatedText);
     }
 
+
     @Test
     public void translateToItalian() {
         googleTranslate.changeTranslationLanguage("Italian");

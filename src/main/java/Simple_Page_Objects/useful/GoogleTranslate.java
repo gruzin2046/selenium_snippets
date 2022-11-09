@@ -31,7 +31,9 @@ public class GoogleTranslate {
     }
 
     public void acceptCookies() {
-        driver.findElement(cookiesBtn).click();
+        try {
+            driver.findElement(cookiesBtn).click();
+        } catch (Exception ignored) {}
     }
 
     public void translateText(String s) {
@@ -40,7 +42,7 @@ public class GoogleTranslate {
 
 
     public String checkTranslation() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(destTextArea));
         return driver.findElement(destTextArea).getText();
     }
@@ -48,6 +50,7 @@ public class GoogleTranslate {
     public void changeTranslationLanguage(String lang) {
         driver.findElement(langChangeBtn).click();
         driver.findElement(searchLanguagesInput).sendKeys(lang);
+        driver.findElement(searchLanguagesInput).click();
         driver.findElement(searchLanguagesInput).sendKeys(Keys.ENTER);
     }
 }
