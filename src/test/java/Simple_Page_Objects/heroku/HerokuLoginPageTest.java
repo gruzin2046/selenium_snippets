@@ -17,7 +17,8 @@ class HerokuLoginPageTest {
 
     @BeforeAll
     public static void warmup() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.home") + "/tools/webdrivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")
+                + "/tools/webdrivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.whitelistedIps", "");
         driver = new ChromeDriver();
     }
@@ -38,10 +39,26 @@ class HerokuLoginPageTest {
         assertTrue(herokuLoginPage.isUsernameIncorrectMsgDisplayed());
     }
 
+    // 1. sequential calls
     @Test
     void submit_incorrectPassword_displaysIncorrectPasswordMessage() {
-        herokuLoginPage.fillUsername(CORRECT_USERNAME)
-                .fillPassword("sadfasdf")
+        // If methods used below would be returning void,
+        // we have to call them sequentially:
+        herokuLoginPage.fillUsername(CORRECT_USERNAME);
+        herokuLoginPage.fillPassword("xyz");
+        herokuLoginPage.submitForm();
+
+        assertTrue(herokuLoginPage.isPasswordIncorrectMsgDisplayed());
+    }
+
+    // 2. chain calls -> monada
+    @Test
+    void submit_incorrectPassword_displaysIncorrectPasswordMessageMONADA() {
+        // If methods used below would be returning HerokuLoginPage instance,
+        // we can call them in one chain (monada):
+        herokuLoginPage
+                .fillUsername(CORRECT_USERNAME)
+                .fillPassword("xyz")
                 .submitForm();
 
         assertTrue(herokuLoginPage.isPasswordIncorrectMsgDisplayed());
