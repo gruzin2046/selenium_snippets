@@ -1,4 +1,4 @@
-package Simple_Page_Objects.gateOpener;
+package Single_Page_Objects.gateOpener;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

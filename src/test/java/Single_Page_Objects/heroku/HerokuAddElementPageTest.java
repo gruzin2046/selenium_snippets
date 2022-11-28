@@ -1,4 +1,4 @@
-package Simple_Page_Objects.heroku;
+package Single_Page_Objects.heroku;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -34,24 +34,11 @@ public class HerokuAddElementPageTest {
         herokuAddElementPage = new HerokuAddElementPage(driver);
     }
 
-    /***
-     * - Po naciśnięciu Add Element 4x pojawią się 4 przyciski Delete
-     * - Po dodaniu jednego elementu naciśnięcie go usuwa go ze strony
-     * - Po dodaniu 4 elementów, naciśnięcie wszystkich usunie wszystkie ze strony
-     * - Po dodaniu 4 elementów, naciśnięcie jednego usunie tylko jeden element
-     *
-     *
-     * - * Test linku do githuba (ribbona) przy przesłoniętej wstążce
-     */
-
-
-    // Czy w ogóle się strona ładuje/wyświetla
     @Test
     public void pageShouldLoad() {
         assertTrue(herokuAddElementPage.isDisplayed());
     }
 
-    // Nie ma żadnego przycisku Delete
     @Test
     public void noneDeleteButtonShouldExist() {
         int elementsOnPageCount = herokuAddElementPage.countElements();
@@ -59,7 +46,6 @@ public class HerokuAddElementPageTest {
         assertEquals(0, elementsOnPageCount);
     }
 
-    // Po naciśnięciu Add Element pojawia się przycisk Delete
     @Test
     public void clickOnAddElementShouldAddDeleteButton() {
         assertEquals(0, herokuAddElementPage.countElements());
@@ -70,7 +56,6 @@ public class HerokuAddElementPageTest {
     }
 
 
-    // Po naciśnięciu Add Element 4x pojawią się 4 przyciski Delete
     @Test
     public void clickOnAddElement4TimesShouldAdd4DeleteButtons() {
         assertEquals(0, herokuAddElementPage.countElements());

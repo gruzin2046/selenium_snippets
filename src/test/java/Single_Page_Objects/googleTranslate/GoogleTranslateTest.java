@@ -1,4 +1,4 @@
-package Simple_Page_Objects.googleTranslate;
+package Single_Page_Objects.googleTranslate;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

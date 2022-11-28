@@ -1,9 +1,9 @@
-package Simple_Page_Objects.heroku;
+package Single_Page_Objects.heroku;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static Simple_Page_Objects.heroku.HerokuLoginPage.SELECTOR_FLASH;
+import static Single_Page_Objects.heroku.LoginPage.HerokuLoginPage.SELECTOR_FLASH;
 
 // klasa modelująca stronę http://the-internet.herokuapp.com/secure
 public class HerokuSecurePage {
@@ -21,7 +21,7 @@ public class HerokuSecurePage {
         }
     }
 
-    public boolean isSuccessfullLoginMsgDisplayed() {
+    public boolean isSuccessfulLoginMsgDisplayed() {
         WebElement flash = driver.findElement(SELECTOR_FLASH);
         String flashText = flash.getText();
 

@@ -1,5 +1,6 @@
-package Simple_Page_Objects.heroku;
+package Single_Page_Objects.heroku.LoginPage;
 
+import Single_Page_Objects.heroku.HerokuSecurePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +16,7 @@ public class HerokuLoginPage {
     private static final By SELECTOR_LOGIN_BUTTON = By.cssSelector("#login > button");
     private static final By SELECTOR_USERNAME_INPUT = By.id("username");
     private static final By SELECTOR_PASSWORD_INPUT = By.id("password");
-    static final By SELECTOR_FLASH = By.id("flash");
+    public static final By SELECTOR_FLASH = By.id("flash");
 
     private WebDriver driver;
 

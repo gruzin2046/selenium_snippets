@@ -1,4 +1,4 @@
-package Simple_Page_Objects.googleTranslate;
+package Single_Page_Objects.googleTranslate;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

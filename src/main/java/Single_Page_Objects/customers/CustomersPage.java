@@ -1,4 +1,4 @@
-package Simple_Page_Objects.customers;
+package Single_Page_Objects.customers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

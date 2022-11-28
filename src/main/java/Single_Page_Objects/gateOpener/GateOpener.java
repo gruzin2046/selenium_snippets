@@ -1,4 +1,4 @@
-package Simple_Page_Objects.gateOpener;
+package Single_Page_Objects.gateOpener;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

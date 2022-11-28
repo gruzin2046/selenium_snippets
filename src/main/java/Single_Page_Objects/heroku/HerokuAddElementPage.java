@@ -1,4 +1,4 @@
-package Simple_Page_Objects.heroku;
+package Single_Page_Objects.heroku;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

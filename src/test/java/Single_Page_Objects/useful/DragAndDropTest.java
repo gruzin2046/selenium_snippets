@@ -1,4 +1,4 @@
-package Simple_Page_Objects.useful;
+package Single_Page_Objects.useful;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
