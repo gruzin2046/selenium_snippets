@@ -1,5 +1,6 @@
 package Single_Page_Objects.heroku;
 
+import Single_Page_Objects.heroku.AddElementPage.AddElementPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,9 +11,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class HerokuAddElementPageTest {
+public class EXAMPLE_WITHOUT_BASE_TEST {
     private static WebDriver driver;
-    private HerokuAddElementPage herokuAddElementPage;
+    private AddElementPage herokuAddElementPage;
 
     // metoda odpalana RAZ przed uruchomieniem "klasy"
     @BeforeAll
@@ -31,7 +32,7 @@ public class HerokuAddElementPageTest {
     // metoda odpalana PRZED KAŻDYM TESTEM
     @BeforeEach
     void prepareTest() {
-        herokuAddElementPage = new HerokuAddElementPage(driver);
+        herokuAddElementPage = new AddElementPage(driver);
     }
 
     @Test

@@ -1,0 +1,67 @@
+package Single_Page_Objects.Base;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class BasePage {
+
+    protected WebDriver driver;
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public BasePage(WebDriver driver, String URL) {
+        this.driver = driver;
+        openURL(URL);
+    }
+
+    // open page based on given URL
+    protected void openURL(String URL) {
+        driver.get(URL);
+    }
+
+    // find element
+    protected WebElement findElementQuietly(By locator) {
+        try {
+            return driver.findElement(locator);
+        } catch (Exception e) {
+            System.out.printf("element: %s is not visible", locator.toString());
+            return null;
+        }
+    }
+
+    // click on element
+    protected void click(By locator) {
+        waitForVisibilityOf(locator, 5);
+        findElementQuietly(locator).click();
+    }
+
+    // type
+    protected void type(By locator, String text) {
+        waitForVisibilityOf(locator, 5);
+        findElementQuietly(locator).sendKeys(text);
+    }
+
+    // wait for
+    private void waitFor(ExpectedCondition<WebElement> condition, Integer timeInSec) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeInSec));
+        wait.until(condition);
+    }
+
+    // wait for visibility
+    protected void waitForVisibilityOf(By locator, Integer timeInSec) {
+        try {
+            waitFor(ExpectedConditions.visibilityOfElementLocated(locator), timeInSec);
+        } catch (Exception e) {
+            System.out.printf("element: %s is not visible", locator.toString());
+            e.printStackTrace();
+        }
+    }
+
+}

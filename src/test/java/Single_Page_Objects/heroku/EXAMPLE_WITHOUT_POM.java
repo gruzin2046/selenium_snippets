@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HerokuWaitTest {
+public class EXAMPLE_WITHOUT_POM {
     private static WebDriver driver;
 
     @BeforeAll
