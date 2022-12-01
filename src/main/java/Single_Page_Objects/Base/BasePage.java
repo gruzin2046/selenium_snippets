@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BasePage {
 
@@ -19,6 +20,11 @@ public class BasePage {
     public BasePage(WebDriver driver, String URL) {
         this.driver = driver;
         openURL(URL);
+    }
+
+    protected boolean pageShouldLoad(String urlContains, By headerSelector, String headerContains) {
+        return driver.getCurrentUrl().contains(urlContains)
+                && findElementQuietly(headerSelector).getText().contains(headerContains);
     }
 
     // open page based on given URL
@@ -34,6 +40,10 @@ public class BasePage {
             System.out.printf("element: %s is not visible", locator.toString());
             return null;
         }
+    }
+
+    protected List<WebElement> findElements(By locator) {
+        return driver.findElements(locator);
     }
 
     // click on element
