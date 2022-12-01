@@ -3,11 +3,6 @@ package Single_Page_Objects.heroku.Checkboxes;
 import Single_Page_Objects.Base.BaseTest;
 import Single_Page_Objects.heroku.CheckboxesPage.CheckboxesPage;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
