@@ -2,7 +2,6 @@ package Single_Page_Objects.heroku.KeyPresses;
 
 import Single_Page_Objects.Base.BaseTest;
 import Single_Page_Objects.heroku.KeyPressesPage.KeyPressesPage;
-import org.checkerframework.checker.units.qual.K;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
