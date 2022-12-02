@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BasePage {
 
@@ -71,6 +73,21 @@ public class BasePage {
         } catch (Exception e) {
             System.out.printf("element: %s is not visible", locator.toString());
             e.printStackTrace();
+        }
+    }
+
+    protected void switchToNewWindowWithTitle(String windowTitle) {
+        String firstWindow = driver.getWindowHandle();
+        Set<String> windows = driver.getWindowHandles();
+        Set<String> filtered = windows.stream()
+                .filter(w -> !w.equals(firstWindow))
+                .collect(Collectors.toSet());
+
+        for (String window : filtered) {
+            driver.switchTo().window(window);
+            if (driver.getTitle().equals(windowTitle)) {
+                break;
+            }
         }
     }
 
