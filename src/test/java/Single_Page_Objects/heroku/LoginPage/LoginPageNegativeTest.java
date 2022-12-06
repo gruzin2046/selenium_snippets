@@ -1,10 +1,10 @@
-package Single_Page_Objects.heroku.LoginPage_CORRECT_EXAMPLE;
+package Single_Page_Objects.heroku.LoginPage;
 import Single_Page_Objects.Base.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static Single_Page_Objects.heroku.LoginPage_CORRECT_EXAMPLE.HerokuLoginPage.CORRECT_USERNAME;
+import static Single_Page_Objects.heroku.LoginPage.HerokuLoginPage.CORRECT_USERNAME;
 
 public class LoginPageNegativeTest extends BaseTest {
 

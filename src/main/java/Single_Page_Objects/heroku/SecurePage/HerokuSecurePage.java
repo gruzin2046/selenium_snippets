@@ -4,7 +4,7 @@ import Single_Page_Objects.Base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static Single_Page_Objects.heroku.LoginPage_CORRECT_EXAMPLE.HerokuLoginPage.SELECTOR_FLASH;
+import static Single_Page_Objects.heroku.LoginPage.HerokuLoginPage.SELECTOR_FLASH;
 
 public class HerokuSecurePage extends BasePage {
     private static final String SECURE_PAGE_URL = "http://the-internet.herokuapp.com/secure";

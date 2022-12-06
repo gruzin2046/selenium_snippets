@@ -1,4 +1,4 @@
-package Single_Page_Objects.heroku.LoginPage_CORRECT_EXAMPLE;
+package Single_Page_Objects.heroku.LoginPage;
 import Single_Page_Objects.Base.BaseTest;
 import Single_Page_Objects.heroku.SecurePage.HerokuSecurePage;
 import org.junit.jupiter.api.BeforeEach;
