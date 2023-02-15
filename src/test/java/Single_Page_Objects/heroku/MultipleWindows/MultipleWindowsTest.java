@@ -4,8 +4,8 @@ import Single_Page_Objects.heroku.MultipleWindowsPage.MultipleWindowsPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MultipleWindowsTest extends BaseTest {
 

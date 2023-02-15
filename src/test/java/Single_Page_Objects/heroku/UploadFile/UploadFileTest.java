@@ -3,9 +3,9 @@ import Single_Page_Objects.Base.BaseTest;
 import Single_Page_Objects.heroku.UploadFilePage.UploadFilePage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.testng.Assert;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UploadFileTest extends BaseTest {
 
@@ -28,8 +28,8 @@ public class UploadFileTest extends BaseTest {
         String header = uploadFilePage.getHeaderText();
         String expectedText = "File Uploaded!";
         String uploadedFileName = uploadFilePage.getUploadedFileName();
-        Assert.assertEquals(header, expectedText);
-        Assert.assertEquals(uploadedFileName, fileName);
+        assertEquals(header, expectedText);
+        assertEquals(uploadedFileName, fileName);
     }
 
 }

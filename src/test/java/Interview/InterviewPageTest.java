@@ -1,12 +1,18 @@
-package Single_Page_Objects.Base;
+package Interview;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class BaseTest {
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    protected static WebDriver driver;
+public class InterviewPageTest {
+
+    private static WebDriver driver;
+    private InterviewPage interviewPage;
 
     @BeforeAll
     public static void warmup() {
@@ -18,5 +24,15 @@ public class BaseTest {
     @AfterAll
     public static void cleanup() {
         driver.quit();
+    }
+
+    @BeforeEach
+    public void prepareTest() {
+        interviewPage = new InterviewPage(driver);
+    }
+
+    @Test
+    public void pageShouldLoad() {
+        assertTrue(interviewPage.pageShouldLoad());
     }
 }

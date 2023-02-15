@@ -3,7 +3,7 @@ import Single_Page_Objects.Base.BaseTest;
 import Single_Page_Objects.heroku.DropdownPage.DropdownPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DropdownPageTest extends BaseTest {
     private DropdownPage dropdownPage;

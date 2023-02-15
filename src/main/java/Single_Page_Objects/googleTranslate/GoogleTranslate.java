@@ -20,9 +20,9 @@ public class GoogleTranslate {
 
     private final WebDriver driver;
 
-    public GoogleTranslate(WebDriver driver){
-        this.driver = driver;
-        driver.get(LOGIN_PAGE_URL);
+     public GoogleTranslate(WebDriver driver){
+            this.driver = driver;
+            driver.get(LOGIN_PAGE_URL);
     }
 
     public boolean pageShouldLoad() {

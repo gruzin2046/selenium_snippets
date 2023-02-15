@@ -3,9 +3,9 @@ import Single_Page_Objects.Base.BaseTest;
 import Single_Page_Objects.heroku.AlertsPage.AlertsPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.testng.Assert;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AlertsTest extends BaseTest {
     private AlertsPage alertsPage;
@@ -26,7 +26,7 @@ public class AlertsTest extends BaseTest {
         String alertText = alertsPage.getAlertText();
         String expectedAlertText = "I am a JS Alert";
         alertsPage.acceptAlert();
-        Assert.assertEquals(expectedAlertText, alertText);
+        assertEquals(expectedAlertText, alertText);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class AlertsTest extends BaseTest {
         alertsPage.acceptAlert();
         String resultMessage = alertsPage.getResultMessage();
         String expectedMessage = "You successfully clicked an alert";
-        Assert.assertEquals(expectedMessage, resultMessage);
+        assertEquals(expectedMessage, resultMessage);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class AlertsTest extends BaseTest {
         alertsPage.acceptAlert();
         String resultMessage = alertsPage.getResultMessage();
         String expectedMessage = "You clicked: Ok";
-        Assert.assertEquals(expectedMessage, resultMessage);
+        assertEquals(expectedMessage, resultMessage);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class AlertsTest extends BaseTest {
         alertsPage.dismissAlert();
         String resultMessage = alertsPage.getResultMessage();
         String expectedMessage = "You clicked: Cancel";
-        Assert.assertEquals(expectedMessage, resultMessage);
+        assertEquals(expectedMessage, resultMessage);
     }
 
     @Test
@@ -63,6 +63,6 @@ public class AlertsTest extends BaseTest {
         alertsPage.acceptAlert();
         String resultMessage = alertsPage.getResultMessage();
         String expectedMessage = "You entered: Hello";
-        Assert.assertEquals(expectedMessage, resultMessage);
+        assertEquals(expectedMessage, resultMessage);
     }
 }
